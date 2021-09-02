@@ -1,6 +1,8 @@
-const utilsExport = require('./utils.js');
+const validator = require('validator');
+const yargs = require('yargs');
 const getNotes = require('./notes.js');
 
-const add = utilsExport.add(5, 1);
+const isEmail = validator.isEmail('Andrew@gmail.com');
+const isURL = validator.isURL('www.xoio.ie');
 
-console.log(getNotes);
+console.log(yargs.argv);

@@ -9,6 +9,7 @@
 	"author": "",
 	"license": "ISC",
 	"dependencies": {
-		"validator": "^13.6.0"
+		"validator": "^13.6.0",
+		"yargs": "^17.1.1"
 	}
 }
