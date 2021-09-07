@@ -1,6 +1,6 @@
 const validator = require('validator');
 const yargs = require('yargs');
-const getNotes = require('./notes.js');
+const { getNotes, addNote, removeNote } = require('./notes.js');
 
 const isEmail = validator.isEmail('Andrew@gmail.com');
 const isURL = validator.isURL('www.xoio.ie');
@@ -22,7 +22,7 @@ yargs.command({
 		}
 	},
 	handler: function(argv) {
-		console.log('Adding a note', argv);
+		addNote(argv.title, argv.body);
 	}
 });
 
@@ -30,9 +30,20 @@ yargs.command({
 yargs.command({
 	command: 'remove',
 	describe: 'Remove a new note.',
-
-	handler: function() {
-		console.log('Removing a note');
+	builder: {
+		title: {
+			describe: 'Note title',
+			demandOption: true,
+			type: 'string'
+		},
+		body: {
+			describe: 'Note body',
+			demandOption: true,
+			type: 'string'
+		}
+	},
+	handler: function(argv) {
+		removeNote(argv.title, argv.body);
 	}
 });
 
